@@ -1,0 +1,47 @@
+
+<button class="btn btn-info align-left pull-right" (click)="showAdvanced()">{{ tableButtonName }}</button>
+
+<table class="table table-striped">
+  <thead>
+    <th>dispositivo</th>
+    <th>tempo de uso</th>
+    <th>custo mensal</th>    
+  </thead>
+  <tbody>
+    <tr>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <td>b</td>
+      <td>b</td>
+      <td>b</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="advanced-table" class="table-hide table table-striped">
+  <thead>
+    <th *ngIf="advancedTable">potência</th>
+    <th *ngIf="advancedTable">consumo</th>
+      </thead>
+  <tbody>
+    <tr>
+      <td *ngIf="advancedTable">a</td>
+      <td *ngIf="advancedTable">a</td>
+    </tr>
+    <tr>
+      <td *ngIf="advancedTable">b</td>
+      <td *ngIf="advancedTable">b</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="total-btn btn btn-default" (click)="showTotal()">Totais:</button>
+
+<div id="total-table" class="table-hide">
+  <app-total-table>
+  
+  </app-total-table>
+</div>

@@ -1,0 +1,14 @@
+.table-hide { 
+  visibility: hidden; /* hides sub-menu */
+  opacity: 0;
+  width: 100%;
+  transform: translateY(-2em);
+  transition: all 0.3s;
+}
+
+.table-show {
+  visibility: visible; /* shows sub-menu */
+  opacity: 1;
+  transform: translateY(0em);
+  transition: all 0.3s;
+}

@@ -1,0 +1,64 @@
+<div class="container">
+  <h2>adicione um dispositivo:</h2>
+  
+  <form (submit)="saveData($event)">
+  
+    <label for="input-device">dispositivo:</label>
+    <input
+      placeholder="insira o nome do dispositivo"
+      id="input-device"
+      class="form-control"
+      autocomplete="off"
+      type="text"
+      name="name"
+      (input)="device.name = $event.target.value"
+      [value]="device.name">
+  
+    <label for="input-potency">potência (W):</label>
+    <input
+      placeholder="insira a potência do dispositivo em WATTS"
+      id="input-potency"
+      class="form-control"
+      autocomplete="off"
+      type="number"
+      name="potency"
+      (input)="device.potency = $event.target.value"
+      [value]="device.potency">
+  
+  
+    <label for="input-usage">tempo de uso</label>
+
+    <div class="input-group">
+  
+      <input
+        placeholder="insira o tempo de uso do dispositivo"
+        id="input-usage"
+        class="form-control"
+        autocomplete="off"
+        type="number"
+        name="usage"
+        (input)="device.usage = $event.target.value"
+        [value]="device.usage">
+  
+      <div class="input-group-addon">
+  
+        <select
+        id="unity"
+        name="unity"
+        (input)="device.unity = $event.target.value"
+        [value]="device.unity">
+
+          <option value="md">min/dia</option>
+          <option value="hd">hr/dia</option>
+          <option value="hs">hr/sem</option>
+          <option value="hm">hr/mês</option>
+          <option value="dm">dias/mês</option>
+
+        </select>
+  
+      </div>
+    </div>
+    <button class="btn btn-info" type="submit">salvar</button>
+  </form>
+  <button [routerLink]="'[/]'" class="btn btn-info pull-right">voltar</button>
+</div>
