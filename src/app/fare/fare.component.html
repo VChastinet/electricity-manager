@@ -1,0 +1,25 @@
+
+<div class="fare-modal panel panel-default closed">
+  <div class="panel-heading">
+    <h3 class="panel-title">insira a tarifa</h3>
+  </div>
+  <div class="panel-body">
+    <input
+    (keyup.enter)="closeModal()"
+    id="fare"
+    placeholder="valor da tarifa"
+    type="number"
+    name="fare"
+    (input)="fare = $event.target.value"
+    [value]="fare">
+  </div>
+</div>
+
+<div class="row">
+  <div class="fare-display col-xs-1 pull-right input-group" (click)="openModal()">
+    <span class="input-group-addon" id="fare-display">R$</span>
+    <p class="form-control" aria-describedby="fare-display"> {{ fare }} </p>
+  </div>
+</div>
+
+<div class="modal-bg closed" (click)="closeModal()"></div>
