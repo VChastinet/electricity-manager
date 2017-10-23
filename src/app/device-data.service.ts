@@ -14,9 +14,7 @@ export class DeviceDataService {
 
 
   add (device: DeviceComponent){
-
     this.devices = device;
-
   }
 
   getDevices(){

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 import { DeviceComponent } from '../device.component'
 
@@ -30,6 +30,8 @@ export class DeviceInputComponent implements OnInit {
     console.log(this.device);
 
     this.service.add(this.device);
+
+    //this.service.getDevices();
 
   }
 

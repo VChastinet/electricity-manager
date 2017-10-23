@@ -11,8 +11,7 @@
       autocomplete="off"
       type="text"
       name="name"
-      (input)="device.name = $event.target.value"
-      [value]="device.name">
+      [(ngModel)]="device.name">
   
     <label for="input-potency">potência (W):</label>
     <input
@@ -22,8 +21,7 @@
       autocomplete="off"
       type="number"
       name="potency"
-      (input)="device.potency = $event.target.value"
-      [value]="device.potency">
+      [(ngModel)]="device.potency">
   
   
     <label for="input-usage">tempo de uso</label>
@@ -37,28 +35,28 @@
         autocomplete="off"
         type="number"
         name="usage"
-        (input)="device.usage = $event.target.value"
-        [value]="device.usage">
+        [(ngModel)]="device.usage">
   
       <div class="input-group-addon">
   
         <select
         id="unity"
         name="unity"
-        (input)="device.unity = $event.target.value"
-        [value]="device.unity">
+        [(ngModel)]="device.unity">
 
           <option value="md">min/dia</option>
           <option value="hd">hr/dia</option>
           <option value="hs">hr/sem</option>
           <option value="hm">hr/mês</option>
+          <option value="ds">dias/sem</option>
           <option value="dm">dias/mês</option>
 
         </select>
-  
+        
       </div>
     </div>
     <button class="btn btn-info" type="submit">salvar</button>
   </form>
   <button [routerLink]="'[/]'" class="btn btn-info pull-right">voltar</button>
+    
 </div>
