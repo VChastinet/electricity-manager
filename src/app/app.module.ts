@@ -8,6 +8,7 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { FareComponent } from './fare/fare.component'
 
 import { MainTableModule } from './main-table/main-table.module';
+import { CoreModule } from './core/core.module'
 
 import { DeviceDataService } from './device-data.service';
 
@@ -24,6 +25,7 @@ import { routing } from './app.routes';
     BrowserModule,
     MainTableModule,
     FormsModule,
+    CoreModule,
     routing
   ],
   providers: [ DeviceDataService ],
