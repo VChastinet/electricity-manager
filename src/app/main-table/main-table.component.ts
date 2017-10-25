@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DeviceWithID, DeviceDataService } from '../device-data.service';
+
 @Component({
   selector: 'app-main-table',
   templateUrl: './main-table.component.html',
@@ -10,7 +12,9 @@ export class MainTableComponent implements OnInit {
   public advancedTable: boolean = false;
   public tableButtonName: string = 'Tabela Avançada';
 
-  constructor() { }
+  deviceList: Array<DeviceWithID>;
+
+  constructor(private devicedataService: DeviceDataService) { }
 
   showAdvanced() {
 
@@ -33,6 +37,11 @@ export class MainTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.devicedataService
+      .getAll()
+      .then((devices: Array<DeviceWithID>) => {
+        this.deviceList = devices;
+      })
   }
 
 }

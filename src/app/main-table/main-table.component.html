@@ -7,16 +7,11 @@
     <th>tempo de uso</th>
     <th>custo mensal</th>    
   </thead>
-  <tbody>
+  <tbody *ngFor="let device of deviceList">
     <tr>
-      <td>a</td>
-      <td>a</td>
-      <td>a</td>
-    </tr>
-    <tr>
-      <td>b</td>
-      <td>b</td>
-      <td>b</td>
+      <td>{{ device.deviceInput.name }}</td>
+      <td>{{ device.deviceInput.usage }} {{ device.deviceInput.unity }}</td>
+      <td>usage * fare</td>
     </tr>
   </tbody>
 </table>

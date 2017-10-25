@@ -3,15 +3,15 @@
   
   <form (submit)="saveData($event)">
   
-    <label for="input-device">dispositivo:</label>
+    <label for="input-deviceInput">dispositivo:</label>
     <input
       placeholder="insira o nome do dispositivo"
-      id="input-device"
+      id="input-deviceInput"
       class="form-control"
       autocomplete="off"
       type="text"
       name="name"
-      [(ngModel)]="device.name">
+      [(ngModel)]="deviceInput.name">
   
     <label for="input-potency">potência (W):</label>
     <input
@@ -21,7 +21,7 @@
       autocomplete="off"
       type="number"
       name="potency"
-      [(ngModel)]="device.potency">
+      [(ngModel)]="deviceInput.potency">
   
   
     <label for="input-usage">tempo de uso</label>
@@ -35,14 +35,14 @@
         autocomplete="off"
         type="number"
         name="usage"
-        [(ngModel)]="device.usage">
+        [(ngModel)]="deviceInput.usage">
   
       <div class="input-group-addon">
   
         <select
         id="unity"
         name="unity"
-        [(ngModel)]="device.unity">
+        [(ngModel)]="deviceInput.unity">
 
           <option value="md">min/dia</option>
           <option value="hd">hr/dia</option>

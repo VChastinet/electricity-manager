@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 import { DeviceComponent } from '../device.component'
-
-import { DeviceDataService } from '../device-data.service'
+import { DeviceWithID, Device, DeviceDataService } from '../device-data.service'
 
 @Component({
   selector: 'app-device-input',
   templateUrl: './device-input.component.html',
   styleUrls: ['./device-input.component.css']
 })
-export class DeviceInputComponent implements OnInit {
+export class DeviceInputComponent{
 
   //private myForm = FormGroup;
-  public device: DeviceComponent = new DeviceComponent;
+  deviceList: Array<DeviceWithID> = [];
+  public deviceInput: DeviceComponent = new DeviceComponent;
 
-  constructor(public service: DeviceDataService /*private fb: FormBuilder*/) {
+  constructor(private deviceDataService: DeviceDataService /*private fb: FormBuilder*/) {
 
-    this.service = service;
     // this.myForm = fb.group({
     //   name: ["", Validators.compose([Validators.required, Validators.minLength(3)])],
     //   potency: ["", Validators.required]
@@ -27,15 +26,21 @@ export class DeviceInputComponent implements OnInit {
   saveData(event){
     event.preventDefault();
 
-    console.log(this.device);
+    let deviceInput = this.deviceInput;
 
-    this.service.add(this.device);
+    const devices: Device = {
+      deviceInput,
+      done: false
+    };
 
-    //this.service.getDevices();
+    this.deviceDataService
+      .add(devices)
+      .then((id) =>{
+        this.deviceList = [...this.deviceList, Object.assign({}, devices, { id })];
+      });
 
+      
+    this.deviceInput = new DeviceComponent;
+      
   }
-
-  ngOnInit() {
-  }
-
 }
