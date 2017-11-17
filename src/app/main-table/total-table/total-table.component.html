@@ -26,7 +26,7 @@
     
         <tr>
           <td>custo mensal:</td>
-          <td>R$ <b>{{ totals('cost') }}</b></td>
+          <td><b>{{ totals('cost') | currency:'BRL':true:'1.2-2' }}</b></td>
         </tr>
     
       </tbody>

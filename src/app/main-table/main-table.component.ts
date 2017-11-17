@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 
 import { DeviceWithID, DeviceDataService } from '../device-data.service';
 import { FareWithID, FareDataService } from '../fare-data.service';
@@ -26,6 +27,13 @@ export class MainTableComponent implements OnInit {
     });
   }
 
+  remove(id: number, event){
+     this.devicedataService.remove(id)
+       .then(() => {
+       this.deviceList = this.deviceList.filter(device => device.id !== id);
+      });
+  }
+
   showAdvanced() {
 
     document.querySelector('#advanced-table').classList.toggle('table-show');
@@ -51,6 +59,7 @@ export class MainTableComponent implements OnInit {
     this.fareDataService
       .getAll()
       .then((fare: Array<FareWithID>) => {
+        console.log("accessing fare database");
         this.fare = fare[0].fareInput;
 
         this.devicedataService

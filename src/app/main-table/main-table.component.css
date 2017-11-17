@@ -12,3 +12,8 @@
   transform: translateY(0em);
   transition: all 0.3s;
 }
+
+.glyphicon-trash{
+  cursor: pointer;
+  color: crimson;
+}
