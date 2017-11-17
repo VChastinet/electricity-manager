@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
-import { FareWithID, Fare, FareDataService } from '../fare-data.service'
+import { CurrencyPipe } from '@angular/common';
+import { FareWithID, Fare, FareDataService } from '../fare-data.service';
 
 @Component({
   selector: 'app-fare',
@@ -21,17 +22,19 @@ export class FareComponent implements OnInit {
   }
 
   closeAndSave(id, fareInput){
+    console.log(fareInput);
     this.setFare.emit({newFare: this.fareInput});
-    
-    document.querySelector('.fare-modal').classList.add('closed');
-    document.querySelector('.modal-bg').classList.add('closed');
-
     this.fareDataService
       .update(id, { fareInput })
       .then(() =>{
         const updateFare = this.fareItem.find((fare) => fare.id === id);
-        this.fareItem = [...this.fareItem.filter((fare) => fare.id != id), Object.assign({}, updateFare, { fareInput })]
-      })
+        this.fareItem = [...this.fareItem.filter((fare) => fare.id != id), Object.assign({}, updateFare, { fareInput })];
+
+      });
+    
+    document.querySelector('.fare-modal').classList.add('closed');
+    document.querySelector('.modal-bg').classList.add('closed');
+
   }
   
   ngOnInit() {

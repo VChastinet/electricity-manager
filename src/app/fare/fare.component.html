@@ -5,15 +5,15 @@
   </div>
   <div class="panel-body">
     <input
-    (keyup.enter)="closeAndSave(fareItem[0].id, $event.target.value)"
+    (keyup.enter)="closeAndSave(fareItem[0].id, fareInput)"
     id="fare"
     placeholder="valor da tarifa"
     type="number"
-    step="0.01"
+    step="0.001"
     min="0"
     name="fareInput"
     (input)="fareInput = $event.target.value"
-    [value]="fareInput">
+    >
   </div>
 </div>
 
@@ -24,4 +24,4 @@
   </div>
 </div>
 
-<div class="modal-bg closed" (click)="closeAndSave(fareItem[0].id, $event.target.value)"></div>
+<div class="modal-bg closed" (click)="closeAndSave(fareItem[0].id, fareInput)"></div>
