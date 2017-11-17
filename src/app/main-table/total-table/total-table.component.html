@@ -5,28 +5,28 @@
       <tbody>
     
         <tr>
-          <td>dispositivo:</td>
-          <td>x</td>
+          <td>dispositivos:</td>
+          <td><b>{{ totals('quantity') }}</b></td>
         </tr>
     
         <tr>
           <td>potência:</td>
-          <td>x</td>
+          <td><b>{{ (totals('potency')*1000).toFixed(2) }}</b> w</td>
         </tr>
     
         <tr>
           <td>tempo de uso:</td>
-          <td>x</td>
+          <td><b>{{ totals('usage') }}</b> h/mês</td>
         </tr>
     
         <tr>
           <td>consumo:</td>
-          <td>x</td>
+          <td><b>{{ totals('consume') }}</b> kw/mês</td>
         </tr>
     
         <tr>
           <td>custo mensal:</td>
-          <td>x</td>
+          <td>R$ <b>{{ totals('cost') }}</b></td>
         </tr>
     
       </tbody>

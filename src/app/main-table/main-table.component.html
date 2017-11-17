@@ -37,8 +37,8 @@
 
 <button class="total-btn btn btn-default" (click)="showTotal()">Totais:</button>
 
-<div id="total-table" class="table-hide">
-  <app-total-table>
+<div id="total-table" class="table-show">
+  <app-total-table [deviceList]="deviceList">
   
   </app-total-table>
 </div>
