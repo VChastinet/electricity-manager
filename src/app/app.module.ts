@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { DeviceInputComponent } from './device-input/device-input.component';
 import { FrontPageComponent } from './front-page/front-page.component';
-import { FareComponent } from './fare/fare.component'
 
 import { MainTableModule } from './main-table/main-table.module';
 import { CoreModule } from './core/core.module'
 
 import { DeviceDataService } from './device-data.service';
+import { FareDataService } from './fare-data.service';
 
 import { routing } from './app.routes';
 
@@ -18,8 +18,7 @@ import { routing } from './app.routes';
   declarations: [
     AppComponent,
     DeviceInputComponent,
-    FrontPageComponent,
-    FareComponent
+    FrontPageComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +27,7 @@ import { routing } from './app.routes';
     CoreModule,
     routing
   ],
-  providers: [ DeviceDataService ],
+  providers: [ DeviceDataService, FareDataService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

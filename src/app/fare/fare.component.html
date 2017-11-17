@@ -5,21 +5,23 @@
   </div>
   <div class="panel-body">
     <input
-    (keyup.enter)="closeModal()"
+    (keyup.enter)="closeAndSave(fareItem[0].id, $event.target.value)"
     id="fare"
     placeholder="valor da tarifa"
     type="number"
-    name="fare"
-    (input)="fare = $event.target.value"
-    [value]="fare">
+    step="0.01"
+    min="0"
+    name="fareInput"
+    (input)="fareInput = $event.target.value"
+    [value]="fareInput">
   </div>
 </div>
 
 <div class="row">
   <div class="fare-display col-xs-1 pull-right input-group" (click)="openModal()">
     <span class="input-group-addon" id="fare-display">R$</span>
-    <p class="form-control" aria-describedby="fare-display"> {{ fare }} </p>
+    <p class="form-control" aria-describedby="fare-display"> {{ fareInput }}</p>
   </div>
 </div>
 
-<div class="modal-bg closed" (click)="closeModal()"></div>
+<div class="modal-bg closed" (click)="closeAndSave(fareItem[0].id, $event.target.value)"></div>

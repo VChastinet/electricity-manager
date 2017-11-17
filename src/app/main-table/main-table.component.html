@@ -3,37 +3,37 @@
 
 <table class="table table-striped">
   <thead>
+    <th>qtd</th>
     <th>dispositivo</th>
-    <th>tempo de uso</th>
-    <th>custo mensal</th>    
+    <th>uso (hora/mês)</th>
+    <th>custo (R$/mês)</th>    
   </thead>
   <tbody *ngFor="let device of deviceList">
     <tr>
+      <td>{{ device.deviceInput.quantity }}</td>
       <td>{{ device.deviceInput.name }}</td>
-      <td>{{ device.deviceInput.usage }} {{ device.deviceInput.unity }}</td>
-      <td>usage * fare</td>
+      <td>{{ device.deviceInput.usage }}</td>
+      <td>{{ device.deviceInput.cost }}</td>
     </tr>
   </tbody>
 </table>
 
 <table id="advanced-table" class="table-hide table table-striped">
   <thead>
-    <th *ngIf="advancedTable">potência</th>
-    <th *ngIf="advancedTable">consumo</th>
+    <th *ngIf="advancedTable">potência (kw)</th>
+    <th *ngIf="advancedTable">consumo (kw/mês)</th>
       </thead>
-  <tbody>
+  <tbody *ngFor="let device of deviceList">
     <tr>
-      <td *ngIf="advancedTable">a</td>
-      <td *ngIf="advancedTable">a</td>
-    </tr>
-    <tr>
-      <td *ngIf="advancedTable">b</td>
-      <td *ngIf="advancedTable">b</td>
+      <td *ngIf="advancedTable">{{ device.deviceInput.potency }}</td>
+      <td *ngIf="advancedTable">{{ device.deviceInput.consume }}</td>
     </tr>
   </tbody>
 </table>
 
-<ng-content></ng-content>
+<app-fare
+  (setFare)="onFareSet($event)"
+></app-fare>
 
 <button class="total-btn btn btn-default" (click)="showTotal()">Totais:</button>
 

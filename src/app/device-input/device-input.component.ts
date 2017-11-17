@@ -23,14 +23,41 @@ export class DeviceInputComponent{
     // })
   }
 
+  adjustValues(deviceInput){
+    switch (deviceInput.unity) {
+      case "md":
+        deviceInput.usage = (deviceInput.usage * 30)/60;
+      break;
+      case "hd":
+        deviceInput.usage = (deviceInput.usage * 30);
+      break;
+      case "hs":
+        deviceInput.usage = (deviceInput.usage*4);
+        break;
+      case "ds":
+        deviceInput.usage = Math.floor((deviceInput.usage * 4.286)*24);
+        break;
+      case "dm":
+        deviceInput.usage = (deviceInput.usage * 24);
+        break;
+      default:
+        break;
+    }
+    deviceInput.potency = deviceInput.potency/1000;
+
+    deviceInput.consume = (deviceInput.potency * deviceInput.usage) * deviceInput.quantity;
+
+  }
+
   saveData(event){
     event.preventDefault();
 
     let deviceInput = this.deviceInput;
 
+    this.adjustValues(deviceInput);
+
     const devices: Device = {
-      deviceInput,
-      done: false
+      deviceInput
     };
 
     this.deviceDataService

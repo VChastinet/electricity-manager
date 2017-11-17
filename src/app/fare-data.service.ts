@@ -1,29 +1,28 @@
 import { Injectable } from '@angular/core';
-import { DeviceComponent } from './device.component'
 
 import { DexieService } from './core/dexie.service';
 import  Dexie from 'dexie';
 
-export interface Device {
-  deviceInput: DeviceComponent;
+export interface Fare {
+  fareInput: number;
 }
 
-export interface DeviceWithID extends Device {
+export interface FareWithID extends Fare {
   id: number;
 }
 
 @Injectable()
 
-export class DeviceDataService {
+export class FareDataService {
 
-  table: Dexie.Table<DeviceWithID, number>;
+  table: Dexie.Table<FareWithID, number>;
 
   constructor(private dexieService: DexieService) {
-    this.table = this.dexieService.table('devices');
+    this.table = this.dexieService.table('fare');
    }
 
 
-   getAll() {
+  getAll() {
     return this.table.toArray();
   }
 
@@ -39,5 +38,3 @@ export class DeviceDataService {
     return this.table.delete(id);
   }
 }
-
-

@@ -4,16 +4,30 @@
   <form (submit)="saveData($event)">
   
     <label for="input-deviceInput">dispositivo:</label>
-    <input
-      placeholder="insira o nome do dispositivo"
-      id="input-deviceInput"
-      class="form-control"
-      autocomplete="off"
-      type="text"
-      name="name"
-      [(ngModel)]="deviceInput.name">
+    
+    <div class="input-group">
+
+      <input
+        placeholder="insira o nome do dispositivo"
+        id="input-deviceInput"
+        class="form-control"
+        autocomplete="off"
+        type="text"
+        name="name"
+        [(ngModel)]="deviceInput.name">
+
+      <div class="input-group-addon">
+
+        <input
+          id="quantity"
+          name="quantity"
+          type="number"
+          [(ngModel)]="deviceInput.quantity">
+      </div>
+    </div>
+
   
-    <label for="input-potency">potência (W):</label>
+    <label for="input-potency">potência (Watts):</label>
     <input
       placeholder="insira a potência do dispositivo em WATTS"
       id="input-potency"

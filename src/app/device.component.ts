@@ -5,4 +5,7 @@ export class DeviceComponent{
   @Input() potency: number = null;
   @Input() usage: number = null;
   @Input() unity: string = "hd";
+  @Input() quantity: number = 1;
+  consume: number = null;
+  cost: number = null;
 }

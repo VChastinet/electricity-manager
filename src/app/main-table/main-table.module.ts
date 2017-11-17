@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TotalTableComponent } from './total-table/total-table.component';
 import { MainTableComponent } from './main-table.component';
+import { FareComponent } from '../fare/fare.component'
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { MainTableComponent } from './main-table.component';
   ],
   declarations: [
     TotalTableComponent,
-    MainTableComponent
+    MainTableComponent,
+    FareComponent
   ],
   exports: [
     TotalTableComponent,

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { DeviceWithID, DeviceDataService } from '../device-data.service';
+import { FareWithID, FareDataService } from '../fare-data.service';
 
 @Component({
   selector: 'app-main-table',
@@ -12,9 +13,18 @@ export class MainTableComponent implements OnInit {
   public advancedTable: boolean = false;
   public tableButtonName: string = 'Tabela Avançada';
 
+  fare: number;
   deviceList: Array<DeviceWithID>;
 
-  constructor(private devicedataService: DeviceDataService) { }
+  constructor(private fareDataService: FareDataService, private devicedataService: DeviceDataService) {
+  }
+
+  onFareSet(event){
+    this.fare = event.newFare;
+    this.deviceList.forEach(device =>{
+      device.deviceInput.cost = Number((this.fare * device.deviceInput.consume).toFixed(2));
+    });
+  }
 
   showAdvanced() {
 
@@ -27,7 +37,7 @@ export class MainTableComponent implements OnInit {
     }
 
     this.advancedTable = !this.advancedTable;
-    
+
   }
 
   showTotal(){
@@ -37,11 +47,34 @@ export class MainTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.devicedataService
+
+    this.fareDataService
       .getAll()
-      .then((devices: Array<DeviceWithID>) => {
-        this.deviceList = devices;
+      .then((fare: Array<FareWithID>) => {
+        this.fare = fare[0].fareInput;
+
+        this.devicedataService
+          .getAll()
+          .then((devices: Array<DeviceWithID>) => {
+            this.deviceList = devices;
+
+            this.deviceList.forEach(device =>{
+              device.deviceInput.cost = Number((this.fare * device.deviceInput.consume).toFixed(2));
+            });
+          });
       })
+      .catch(()=> {
+        console.log("creating new fare database");
+        this.devicedataService
+        .getAll()
+        .then((devices: Array<DeviceWithID>) => {
+          this.deviceList = devices;
+
+          this.deviceList.forEach(device =>{
+            device.deviceInput.cost = 0;
+          });
+        });
+      }); 
   }
 
 }
