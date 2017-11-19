@@ -13,12 +13,14 @@ import { DeviceDataService } from './device-data.service';
 import { FareDataService } from './fare-data.service';
 
 import { routing } from './app.routes';
+import { TotalCostComponent } from './total-cost/total-cost.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DeviceInputComponent,
-    FrontPageComponent
+    FrontPageComponent,
+    TotalCostComponent
   ],
   imports: [
     BrowserModule,
