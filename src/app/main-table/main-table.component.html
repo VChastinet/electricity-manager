@@ -1,5 +1,7 @@
 
-<button class="btn btn-info align-left pull-right" (click)="showAdvanced()">{{ tableButtonName }}</button>
+
+<button class="btn btn-info align-left pull-left" (click)="showAdvanced()">{{ tableButtonName }}</button>
+<app-fare (setFare)="onFareSet($event)"></app-fare>
 
 <table class="table table-striped">
   <thead>
@@ -14,7 +16,10 @@
       <td>{{ device.deviceInput.name }}</td>
       <td>{{ device.deviceInput.usage }}</td>
       <td>{{ device.deviceInput.cost | currency:'BRL':true:'1.2-2'}}</td>
-      <td><span class="glyphicon glyphicon-trash" (click)="remove(device.id)"></span></td>
+      <td>
+        <span [routerLink]="['/input', device.id]" class="glyphicon glyphicon-pencil"></span>
+        <span class="glyphicon glyphicon-trash" (click)="remove(device.id)"></span>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -32,14 +37,11 @@
   </tbody>
 </table>
 
-<app-fare
-  (setFare)="onFareSet($event)"
-></app-fare>
-
 <button class="total-btn btn btn-default" (click)="showTotal()">Totais:</button>
 
-<div id="total-table" class="table-show">
+<ng-content></ng-content>
+
+<div id="total-table" class="table-hide">
   <app-total-table [deviceList]="deviceList">
-  
   </app-total-table>
 </div>

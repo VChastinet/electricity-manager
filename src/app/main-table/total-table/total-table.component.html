@@ -3,6 +3,11 @@
     <table class="table table-striped">
     
       <tbody>
+
+        <tr>
+          <td>custo mensal:</td>
+          <td><b>{{ totals('cost') | currency:'BRL':true:'1.2-2' }}</b></td>
+        </tr>
     
         <tr>
           <td>dispositivos:</td>
@@ -22,11 +27,6 @@
         <tr>
           <td>consumo:</td>
           <td><b>{{ totals('consume') }}</b> kw/mês</td>
-        </tr>
-    
-        <tr>
-          <td>custo mensal:</td>
-          <td><b>{{ totals('cost') | currency:'BRL':true:'1.2-2' }}</b></td>
         </tr>
     
       </tbody>

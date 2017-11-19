@@ -16,4 +16,15 @@
 .glyphicon-trash{
   cursor: pointer;
   color: crimson;
+  margin-left: 10px;
+}
+
+.glyphicon-pencil{
+  cursor: pointer;
+  color: cornflowerblue;
+}
+
+.btn-info{
+  margin: 20px 0 20px 0;
+  width: 15.5rem;
 }
