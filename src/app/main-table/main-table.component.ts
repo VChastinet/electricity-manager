@@ -68,7 +68,7 @@ export class MainTableComponent implements OnInit {
             this.deviceList = devices;
 
             this.deviceList.forEach(device =>{
-              device.deviceInput.cost = Number((this.fare * device.deviceInput.consume).toFixed(2));
+              device.deviceInput.cost = (this.fare * device.deviceInput.consume);
             });
           });
       })

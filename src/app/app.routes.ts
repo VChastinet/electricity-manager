@@ -6,6 +6,7 @@ import { DeviceInputComponent } from './device-input/device-input.component';
 const appRoutes: Routes =[
       { path: '', component: FrontPageComponent },
       { path: 'input', component: DeviceInputComponent },
+      { path: 'input/:id', component: DeviceInputComponent },
       { path: '**', redirectTo: '' }
     ];
 

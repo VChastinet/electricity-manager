@@ -23,7 +23,11 @@ export class DeviceDataService {
    }
 
 
-   getAll() {
+  getById(id){
+    return this.table.get(id)
+  }
+  
+  getAll() {
     return this.table.toArray();
   }
 

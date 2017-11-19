@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { ActivatedRoute, Router} from '@angular/router';
 
 import { DeviceComponent } from '../device.component'
 import { DeviceWithID, Device, DeviceDataService } from '../device-data.service'
@@ -14,13 +15,40 @@ export class DeviceInputComponent{
   //private myForm = FormGroup;
   deviceList: Array<DeviceWithID> = [];
   public deviceInput: DeviceComponent = new DeviceComponent;
+  id: number = null;
 
-  constructor(private deviceDataService: DeviceDataService /*private fb: FormBuilder*/) {
+  constructor(private deviceDataService: DeviceDataService, private route: ActivatedRoute, private router: Router /*private fb: FormBuilder*/) {
 
     // this.myForm = fb.group({
     //   name: ["", Validators.compose([Validators.required, Validators.minLength(3)])],
     //   potency: ["", Validators.required]
     // })
+
+    this.route.params.subscribe(params => {
+      this.id = Number(params.id);
+      if (this.id){
+        this.deviceDataService
+          .getById(this.id)
+          .then((device: DeviceWithID) => {
+            this.deviceInput = device.deviceInput;
+            this.deviceInput.potency *= 1000 
+          });
+      }
+    });
+  }
+
+  checkParams(){
+    this.route.params.subscribe(params => {
+      let id = Number(params.id);
+      if (id){
+        this.deviceDataService
+          .getById(id)
+          .then((device: DeviceWithID) => {
+            this.deviceInput = device.deviceInput;
+            this.deviceInput.potency *= 1000 
+          });
+      }
+    });
   }
 
   adjustValues(deviceInput){
@@ -43,10 +71,11 @@ export class DeviceInputComponent{
       default:
         break;
     }
-    deviceInput.potency = deviceInput.potency/1000;
+    deviceInput.potency /= 1000;
 
-    deviceInput.consume = (deviceInput.potency * deviceInput.usage) * deviceInput.quantity;
+    deviceInput.consume = ((deviceInput.potency * deviceInput.usage) * deviceInput.quantity).toFixed(2);
 
+    deviceInput.unity = "hm";
   }
 
   saveData(event){
@@ -60,14 +89,23 @@ export class DeviceInputComponent{
       deviceInput
     };
 
-    this.deviceDataService
-      .add(devices)
-      .then((id) =>{
-        this.deviceList = [...this.deviceList, Object.assign({}, devices, { id })];
-      });
-
-      
-    this.deviceInput = new DeviceComponent;
-      
+    if(this.id){
+      let id = this.id;
+      this.deviceDataService
+        .update(id, { deviceInput })
+        .then(() =>{
+          const updateDevice = this.deviceList.find((device) => device.id === id);
+          this.deviceList = [...this.deviceList.filter((device) => device.id != id), Object.assign({}, updateDevice, { deviceInput })];
+          this.router.navigate(['']);
+        });
+    } else {
+      this.deviceDataService
+        .add(devices)
+        .then((id) =>{
+          this.deviceList = [...this.deviceList, Object.assign({}, devices, { id })];
+        });
+        
+      this.deviceInput = new DeviceComponent;
+    }
   }
 }

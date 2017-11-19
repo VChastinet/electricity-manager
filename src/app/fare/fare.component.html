@@ -19,8 +19,8 @@
 
 <div class="row">
   <div class="fare-display col-xs-1 pull-right input-group" (click)="openModal()">
-    <span class="input-group-addon" id="fare-display">R$</span>
-    <p class="form-control" aria-describedby="fare-display"> {{ fareInput }}</p>
+    <span class="input-group-addon" id="fare-display">tarifa:</span>
+    <p class="form-control" aria-describedby="fare-display"> {{ fareInput | currency:'BRL':true:'1.4-4' }}</p>
   </div>
 </div>
 
