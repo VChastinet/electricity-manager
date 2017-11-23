@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DeviceWithID } from '../device-data.service';
 
 @Component({
   selector: 'app-total-cost',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TotalCostComponent implements OnInit {
 
+  cost: number = 100;
+  @Input() deviceList: Array<DeviceWithID>;
+  
   constructor() { }
-
+  
   ngOnInit() {
   }
 
