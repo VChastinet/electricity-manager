@@ -11,9 +11,6 @@ import { FareWithID, FareDataService } from '../fare-data.service';
 })
 export class MainTableComponent {
 
-  public advancedTable: boolean = false;
-  public tableButtonName: string = 'Tabela Avançada';
-
   fare: number;
   deviceList: Array<DeviceWithID>;
 
@@ -61,20 +58,6 @@ export class MainTableComponent {
        .then(() => {
        this.deviceList = this.deviceList.filter(device => device.id !== id);
       });
-  }
-
-  showAdvanced() {
-
-    document.querySelector('#advanced-table').classList.toggle('table-show');
-    
-    if(!this.advancedTable){
-      this.tableButtonName = 'Tabela Simples';
-    } else if (this.advancedTable) {
-      this.tableButtonName =  'Tabela Avançada';
-    }
-
-    this.advancedTable = !this.advancedTable;
-
   }
 
   showTotal(){
