@@ -16,7 +16,7 @@ export class TotalTableComponent implements OnInit {
     let totalSum = 0;
     if(this.deviceList != undefined){
       this.deviceList.forEach(device => {
-        totalSum += device.deviceInput[item];
+        totalSum += Number(device.deviceInput[item]);
       });
     }
     return totalSum;

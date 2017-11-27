@@ -16,17 +16,12 @@
     
         <tr>
           <td>potência:</td>
-          <td><b>{{ (totals('potency')*1000).toFixed(2) }}</b> w</td>
-        </tr>
-    
-        <tr>
-          <td>tempo de uso:</td>
-          <td><b>{{ totals('usage') }}</b> h/mês</td>
+          <td><b>{{ totals('potency').toFixed(3) }}</b> KW</td>
         </tr>
     
         <tr>
           <td>consumo:</td>
-          <td><b>{{ totals('consume') }}</b> kw/mês</td>
+          <td><b>{{ totals('consume') }}</b> KWh/mês</td>
         </tr>
     
       </tbody>
