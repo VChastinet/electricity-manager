@@ -22,11 +22,35 @@
 .glyphicon-pencil{
   cursor: pointer;
   color: cornflowerblue;
+  border-right: solid 1px lightgray;
+  padding: 5px 15px 5px 0;
 }
 
 .btn-info{
   margin: 20px 0 20px 0;
   width: 15.5rem;
+}
+
+th{
+  text-transform: none !important;
+}
+
+.rtable .quantity{
+  position: relative;
+  float: left;
+  align-self: center;
+  border-style: dotted;
+  border-width: 0 1.2px 1.2px 0;
+  border-color: lightgray;
+  margin-right: 5px;
+  padding: 3px 8px 3px 8px;
+}
+.rtable .device-name{
+  display: block;
+  margin-top: 8px;
+}
+.rtable tbody td:first-child{
+  padding: 0;
 }
 
 @media (max-width: 750px){
@@ -71,7 +95,6 @@
   
   .rtable th,
   .rtable td {
-    padding: 6px 12px;
     border: 1px solid #d9d7ce;
   }
   
