@@ -46,8 +46,8 @@ th{
   padding: 3px 8px 3px 8px;
 }
 .rtable .device-name{
-  display: block;
-  margin-top: 8px;
+  display: inline-block;
+  margin: 8px 5px 0 0;
 }
 .rtable tbody td:first-child{
   padding: 0;
